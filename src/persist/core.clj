@@ -12,9 +12,6 @@
 (defonce store-location
   (Files/createTempDirectory "clj-immut" (make-array FileAttribute 0)))
 
-(defprotocol IStored
-  (store [v] "Persist Clojure value `v` to disk."))
-
 (defonce ^:private cleaner (Cleaner/create))
 
 ;; reference counts
