@@ -24,6 +24,8 @@
   IDeref
   (deref [_] (-> file io/reader PushbackReader. edn/read)))
 (defmethod pp/simple-dispatch Persisted [{:keys [file]}] (pr file))
+(defmethod print-method Persisted [p ^java.io.Writer w]
+  (.write w (str p)))
 
 (defn persist
   [v]
