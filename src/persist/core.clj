@@ -18,7 +18,8 @@
 (defonce ^:private cleaner (Cleaner/create))
 
 ;; reference counts
-(defonce ^:private store-agent (agent {}))
+(defonce ^:private ^{:doc "Reference counts to items in the store."} store-agent
+  (agent {}))
 
 (defrecord Persisted [file]
   IDeref
