@@ -1,5 +1,5 @@
-(defproject file-backed-cache "0.1.0-SNAPSHOT"
-  :description "FIXME: write description"
+(defproject persist "0.1.0-SNAPSHOT"
+  :description "Persist Clojure data structures to disk."
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
