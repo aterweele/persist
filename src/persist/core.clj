@@ -34,7 +34,7 @@
       (fn [counts]
         (if (counts file-name)
           (update counts file-name inc)
-          (do 
+          (do
             (with-open [w (io/writer f)]
               (binding [*out* w
                         ;; TODO: figure out why *print-length* is
