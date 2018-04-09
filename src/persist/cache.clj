@@ -13,5 +13,11 @@
   (seed [_ base]
         (PersistedCache.
          (into {}
-               (map (juxt identity (comp p/persist (partial get base))))
-               (keys base)))))
+               (map (juxt key (comp p/persist val)))
+               base))))
+
+(defn persisted-cache-factory
+  "Yield a persisted cache initialized to `base`."
+  [base]
+  {:pre [(map? base)]}
+  (c/seed (PersistedCache. {}) base))
