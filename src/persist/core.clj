@@ -26,6 +26,9 @@
   (.write w (str p)))
 
 (defn persist
+  "Write Clojure value `v` to the filesystem. Yields an object which
+  `deref`s to `v`. When that object is garbage collected, the file
+  that stored `v` is deleted."
   [v]
   (let [file-name (-> v hash/uuid str)
         f         (io/file store-location file-name)
