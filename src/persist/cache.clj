@@ -4,8 +4,11 @@
 
 (c/defcache PersistedCache [cache]
   c/CacheProtocol
-  (lookup [_ item] (get cache item))
-  (lookup [_ item not-found] (get cache item not-found))
+  (lookup [_ item] @(get cache item))
+  (lookup [_ item not-found]
+          (if (contains? cache item)
+            @(get cache item)
+            not-found))
   (has? [_ item] (contains? cache item))
   (hit [this _] this)
   (miss [_ item result] (PersistedCache. (assoc cache item (p/persist result))))
